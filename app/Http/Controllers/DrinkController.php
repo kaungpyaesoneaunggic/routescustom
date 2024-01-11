@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Drink;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreDrinkRequest;
 class DrinkController extends Controller
 {
     /**
@@ -11,6 +11,9 @@ class DrinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    
+
     public function index()
     {
         //
@@ -32,10 +35,12 @@ class DrinkController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\StoreDrinkRequest;
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+     // @param  \Illuminate\Http\Request  $request
+    public function store(StoreDrinkRequest $request)
     {
         //
         $drink = new Drink();
@@ -45,10 +50,16 @@ class DrinkController extends Controller
         $drink->description = $request->description;
         $drink->quantity = $request->quantity;
         $drink->save();
-        return $drink;
-
-
+        return redirect()->route('drink.index');
     }
+    // private function requestValidator($request){
+    //     return validator($request->validate([
+    //         (['name=>required',
+    //         'price'=>'required',
+    //         'quantity'=>'required'
+    //         ])
+    //     ]));
+    // }
 
     /**
      * Display the specified resource.
@@ -59,6 +70,8 @@ class DrinkController extends Controller
     public function show($id)
     {
         //
+        $drink = Drink::find($id);
+        return view("drink.detail",compact('drink'));
     }
 
     /**
@@ -76,11 +89,12 @@ class DrinkController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\UpdateDrinkRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    //* @param  \Illuminate\Http\Request  $request
+    public function update(UpdateDrinkRequest $request, $id)
     {
         //
         $drink = Drink::find($id);
@@ -103,5 +117,27 @@ class DrinkController extends Controller
     public function destroy($id)
     {
         //
+        $drink = Drink::find($id);
+        if($drink){
+            $drink->delete();
+        }
+        return redirect()->route('drink.index');
+    }
+
+
+    public function validator(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            // Add more validation rules as needed
+        ]);
+
+        // Create a new drink using the validated data
+        $drink = Drink::create($validatedData);
+
+        // Redirect or perform any additional actions
+        return redirect()->route('show', ['id' => $drink->id]);
     }
 }

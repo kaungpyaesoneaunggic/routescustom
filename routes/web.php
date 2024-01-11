@@ -30,4 +30,6 @@ Route::middleware('auth')->prefix('drink')->group(function () {
     Route::post('/', [DrinkController::class, 'store'])->name('drink.store');
     Route::get('/edit/{id}', [DrinkController::class, 'edit'])->name('drink.edit');
     Route::put('/update/{id}', [DrinkController::class, 'update'])->name('drink.update');
+    Route::get('/show/{id}', [DrinkController::class, 'show'])->name('drink.show');
+    Route::delete('/delete/{id}', [DrinkController::class, 'destroy'])->name('drink.destroy');
 });

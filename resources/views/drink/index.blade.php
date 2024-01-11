@@ -34,10 +34,10 @@
                                 <td>{{ $drink->quantity }}</td>
                                 <td>
                                   <div class="justify-content-center">
-                                   
                                       <a href="{{ route('drink.edit',$drink->id) }}"  class="btn btn-outline-warning btn-sm">🖋</a>
-                                      <form   method="post"  class="d-inline-block">
-                                        
+                                      <a type="button" href="{{ route('drink.show',$drink->id)}}" class="btn btn-outline-info btn-sm"> &nbsp;  !  &nbsp; </a>
+                                      <form  action="{{ route('drink.destroy', $drink->id )}}" method="post"  class="d-inline-block">
+                                        @method('delete')
                                         @csrf
                                         <button type="submit" class="btn btn-outline-danger btn-sm" >🚮</button>
                                       </form>
