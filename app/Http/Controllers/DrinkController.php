@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Drink;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreDrinkRequest;
+use App\Http\Requests\UpdateDrinkRequest;
 class DrinkController extends Controller
 {
     /**
@@ -89,10 +90,11 @@ class DrinkController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\UpdateDrinkRequest $request
+     * @param App\Http\Requests\UpdateDrinkRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     //* @param  \Illuminate\Http\Request  $request
     public function update(UpdateDrinkRequest $request, $id)
     {

@@ -19,7 +19,7 @@
                         </div>
                         <div class="mb-3">
                             <label  class="form-label">Price<small class="text-danger">*</small></label>
-                            <input value="{{ $drink->price }}" name="price" class="form-control @error('price') is-invalid @enderror " >
+                            <input value="{{ old('price')?? $drink->price }}" name="price" class="form-control @error('price') is-invalid @enderror " >
                             @error('price')
                                 <div class="text-danger">*{{ $message }}</div>
                             @enderror

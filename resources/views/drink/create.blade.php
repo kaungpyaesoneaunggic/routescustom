@@ -50,7 +50,7 @@
                             @enderror
                         </div>
                         <div class="mb-4 text-center">
-                                <a  class="btn btn-lg btn-outline-dark">Back</a>
+                                <a  href="{{ route('drink.index') }}" class="btn btn-lg btn-outline-dark">Back</a>
                             <button type="submit" class="btn btn-lg btn-outline-primary">Submit</button>
                         </div>
                         </form>
