@@ -31,6 +31,7 @@
                                 <option value="juice">Juice</option>
                                 <option value="liquor">Liquor</option>
                                 <option value="dairy">Dairy</option>
+                                <option value="water">Carbonated</option>
                                 <option value="water">Water</option>
                             </select>
                             @error('type')

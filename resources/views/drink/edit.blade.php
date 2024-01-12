@@ -12,7 +12,7 @@
                             @method('put')
                         <div class="mb-3 mt-3">
                             <label  class="form-label">Name <small class="text-danger">*</small></label>
-                            <input value="{{ $drink->name }}" name="name" class="form-control @error('name') is-invalid @enderror " >
+                            <input value="{{old('name')?? $drink->name }}" name="name" class="form-control @error('name') is-invalid @enderror " >
                             @error('name')
                                 <div class="text-danger">*{{ $message }}</div>
                             @enderror
@@ -26,11 +26,12 @@
                         </div>
                         <div class="mb-3">
                             <label  class="form-label">Type<small class="text-danger">*</small></label>
-                            <select value="{{ $drink->type }}" name="type">
+                            <select value="{{old('type')?? $drink->type }}" name="type">
                                 <option value="caffine">Caffine</option>
                                 <option value="juice">Juice</option>
                                 <option value="liquor">Liquor</option>
                                 <option value="dairy">Dairy</option>
+                                <option value="carbonated">Water</option>
                                 <option value="water">Water</option>
                             </select>
                             @error('type')
@@ -39,14 +40,14 @@
                         </div>
                         <div class="mb-3">
                             <label  class="form-label">Description<small class="text-danger">*</small></label>
-                            <input value="{{ $drink->description }}"  type="textarea" name="description" class="form-control @error('quantity') is-invalid @enderror " >
+                            <input value="{{old('description')?? $drink->description }}"  type="textarea" name="description" class="form-control @error('quantity') is-invalid @enderror " >
                             @error('description')
                                 <div class="text-danger">*{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label  class="form-label">Quantity<small class="text-danger">*</small></label>
-                            <input value="{{ $drink->quantity }}" name="quantity" class="form-control @error('quantity') is-invalid @enderror " >
+                            <input value="{{old('quantity')?? $drink->quantity }}" name="quantity" class="form-control @error('quantity') is-invalid @enderror " >
                             @error('quantity')
                                 <div class="text-danger">*{{ $message }}</div>
                             @enderror

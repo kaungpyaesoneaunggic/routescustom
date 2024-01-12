@@ -23,7 +23,7 @@
                         </div>
                         <div class="mb-3">
                             <label  class="form-label">Description</label>
-                            <input value="{{ $drink->description }}"  type="textarea" name="description" class="form-control" readonly >
+                            <input value="{~{ $drink->description }}"  type="textarea" name="description" class="form-control" readonly >
 
                         </div>
                         <div class="mb-3">
