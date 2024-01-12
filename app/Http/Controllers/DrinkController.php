@@ -36,7 +36,7 @@ class DrinkController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\StoreDrinkRequest;
+     * @param  \App\Http\Requests\StoreDrinkRequest;
      * @return \Illuminate\Http\Response
      */
 
@@ -90,7 +90,7 @@ class DrinkController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param App\Http\Requests\UpdateDrinkRequest $request
+     * @param \App\Http\Requests\UpdateDrinkRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
